@@ -1,3 +1,9 @@
+# Anpan
+
+Anpan は日常の中のプログラミング活動において、
+うまくいかなかったことや間違えてしまったことなどの、
+アンチパターン的な Tips をメモすることを目的とするプロダクトです。
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
