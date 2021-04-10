@@ -1,17 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { AuthProvider } from './auth/AuthProvider';
 import { PrivateRoute } from './auth/PrivateRoute';
 import { AuthenticatedRoute } from './auth/AuthenticatedRoute';
 import { SignInPage } from './pages/SignInPage';
 import { SignUpPage } from './pages/SignUpPage';
+import { MemoListPage } from './pages/my-list/MemoListPage';
+import { ThemeProvider } from '@material-ui/core/styles';
+import createTheam from './thema';
 
-function App() {
+const theme = createTheam();
+
 function App(): JSX.Element {
   return (
-    <div className="App">
+    <ThemeProvider theme={theme}>
       <AuthProvider>
         <Router>
           <AuthenticatedRoute exact path="/"></AuthenticatedRoute>
@@ -22,13 +25,9 @@ function App(): JSX.Element {
             path="/my-list"
             component={MemoListPage}
           ></PrivateRoute>
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
         </Router>
       </AuthProvider>
+    </ThemeProvider>
   );
 }
 
