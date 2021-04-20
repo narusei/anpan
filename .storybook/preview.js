@@ -1,5 +1,6 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { BrowserRouter as Router } from 'react-router-dom';
 import {
   ThemeProvider as MaterialThemeProvider,
   StylesProvider,
@@ -34,9 +35,11 @@ const withThemeProvider = (Story, context) => {
       <MaterialThemeProvider theme={theme}>
         <StyledThemeProvider theme={theme}>
           <AuthProvider>
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-            <CssBaseline />
-            <Story {...context} />
+            <Router>
+              {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+              <CssBaseline />
+              <Story {...context} />
+            </Router>
           </AuthProvider>
         </StyledThemeProvider>
       </MaterialThemeProvider>
