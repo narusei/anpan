@@ -1,40 +1,41 @@
 import React from 'react';
 import { useAuth } from '../../auth/AuthProvider';
-import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import { Link, useHistory } from 'react-router-dom';
+import styled from 'styled-components/macro';
+import {
+  Container,
+  Avatar as MuiAvatar,
+  Button,
+  CssBaseline,
+  TextField,
+  Typography,
+} from '@material-ui/core';
+import { LockOutlined as LockOutlinedIcon } from '@material-ui/icons';
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
+const Paper = styled.div`
+  margin-top: ${(props) => props.theme.spacing(8)}px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const LockAvator = styled(MuiAvatar)`
+  margin: ${(props) => props.theme.spacing(1)}px;
+  background-color: ${(props) => props.theme.palette.secondary.main};
+`;
+
+const Form = styled.form`
+  width: 100%;
+  margin-top: ${(props) => props.theme.spacing(1)}px;
+`;
+
+const SubmitButton = styled(Button)`
+  margin: ${(props) => props.theme.spacing(3, 0, 2)};
+`;
 
 export const SignUpPage: React.FC = () => {
   const auth = useAuth();
   const history = useHistory();
-  const classes = useStyles();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -50,14 +51,14 @@ export const SignUpPage: React.FC = () => {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
+      <Paper>
+        <LockAvator>
           <LockOutlinedIcon />
-        </Avatar>
+        </LockAvator>
         <Typography component="h1" variant="h5">
           Sign Up
         </Typography>
-        <form onSubmit={handleSubmit} className={classes.form} noValidate>
+        <Form onSubmit={handleSubmit} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
@@ -80,18 +81,17 @@ export const SignUpPage: React.FC = () => {
             id="password"
             autoComplete="current-password"
           />
-          <Button
+          <SubmitButton
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
           >
-            Sign In
-          </Button>
-        </form>
+            Sign Up
+          </SubmitButton>
+        </Form>
         <Link to="/signin">{'Already have an account? Sign in'}</Link>
-      </div>
+      </Paper>
     </Container>
   );
 };
