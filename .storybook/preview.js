@@ -1,5 +1,11 @@
-import { muiTheme } from 'storybook-addon-material-ui';
-import createTheam from '../src/thema';
+import React from 'react';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import {
+  ThemeProvider as MaterialThemeProvider,
+  StylesProvider,
+} from '@material-ui/core/styles';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components';
+import { createTheme } from '../src/thema';
 import firebase from 'firebase';
 import { AuthProvider } from '../src/auth/AuthProvider';
 
@@ -16,17 +22,26 @@ const config = {
 firebase.initializeApp(config);
 firebase.analytics();
 
-const theam = createTheam();
+const theme = createTheme();
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
 };
 
-export const decorators = [
-  muiTheme(theam),
-  (Story) => (
-    <AuthProvider>
-      <Story />
-    </AuthProvider>
-  ),
-];
+const withThemeProvider = (Story, context) => {
+  return (
+    <StylesProvider injectFirst>
+      <MaterialThemeProvider theme={theme}>
+        <StyledThemeProvider theme={theme}>
+          <AuthProvider>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <CssBaseline />
+            <Story {...context} />
+          </AuthProvider>
+        </StyledThemeProvider>
+      </MaterialThemeProvider>
+    </StylesProvider>
+  );
+};
+
+export const decorators = [withThemeProvider];
