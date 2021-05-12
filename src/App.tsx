@@ -5,6 +5,7 @@ import {
   ThemeProvider as MaterialThemeProvider,
   StylesProvider,
 } from '@material-ui/styles';
+import { CssBaseline } from '@material-ui/core';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { createTheme } from './thema';
 import { AuthProvider } from './auth/AuthProvider';
@@ -22,6 +23,7 @@ function App(): JSX.Element {
       <MaterialThemeProvider theme={theme}>
         <StyledThemeProvider theme={theme}>
           <AuthProvider>
+            <CssBaseline />
             <Router>
               <AuthenticatedRoute exact path="/"></AuthenticatedRoute>
               <Route exact path="/signin" component={SignInPage}></Route>
