@@ -5,7 +5,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { AMemoListLayout } from '.';
 
 export default {
-  title: 'layout/MemoList',
+  title: 'layout/my-list/MemoList',
   component: AMemoListLayout,
   argTypes: {
     backgroundColor: { control: 'color' },
