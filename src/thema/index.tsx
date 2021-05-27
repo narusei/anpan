@@ -1,11 +1,11 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-import { purple, red } from '@material-ui/core/colors';
+import { createMuiTheme, Theme } from '@material-ui/core/styles';
 
-export const createTheme = () => {
+export const createTheme = (): Theme => {
   return createMuiTheme({
     palette: {
-      primary: purple,
-      secondary: red,
+      primary: {
+        main: '#C7A3F9',
+      },
     },
   });
 };
