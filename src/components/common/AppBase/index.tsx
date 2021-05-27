@@ -1,16 +1,18 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { Grid as MuiGrid, Grid } from '@material-ui/core';
+import styled from 'styled-components/macro';
 
-type AppBaseProps = {
-  Child: React.FC;
-};
+const BackgroundGrid = styled(MuiGrid)`
+  min-height: calc(100vh - 56px);
+  flex-grow: 1;
+`;
 
-const useStyles = makeStyles((thema) => ({}));
-
-export const AppBase: React.FC<AppBaseProps> = ({ Child }) => {
+export const AppBase: React.FC = (props) => {
   return (
-    <div>
-      <Child></Child>
-    </div>
+    <BackgroundGrid container>
+      <Grid item xs={12}>
+        {props.children}
+      </Grid>
+    </BackgroundGrid>
   );
 };
