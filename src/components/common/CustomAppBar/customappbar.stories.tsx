@@ -19,7 +19,7 @@ export const Default = Template.bind({});
 Default.args = {
   left: (
     <img
-      src="/static/anpan-logo.svg"
+      src="/static/img/anpan-logo.svg"
       alt="Anpan"
       title="Anpan アンパン"
       width="94px"

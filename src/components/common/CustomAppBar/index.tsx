@@ -13,7 +13,7 @@ const LeftGrid = styled(MuiGrid)`
 
 export const CustomAppBar: React.FC<CustomAppBarProps> = ({ left, right }) => {
   return (
-    <AppBar position="static" color="primary">
+    <AppBar position="static" color="default">
       <Toolbar>
         <LeftGrid>{left}</LeftGrid>
         <Grid container justify="flex-end">
