@@ -9,5 +9,5 @@ const SpacingGrid = styled(MuiGrid)<{ flex?: boolean }>`
 export const SpacingContainer: React.FC<
   ComponentProps<typeof MuiGrid> & { flex?: boolean }
 > = (props) => {
-  return <SpacingGrid {...props}></SpacingGrid>;
+  return <SpacingGrid {...props}>{props.children}</SpacingGrid>;
 };
