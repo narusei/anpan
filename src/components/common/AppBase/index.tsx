@@ -1,5 +1,5 @@
 import React from 'react';
-import { CssBaseline } from '@material-ui/core';
+import { CssBaseline, GridDirection } from '@material-ui/core';
 import styled from 'styled-components/macro';
 
 const Root = styled.div`
@@ -7,17 +7,21 @@ const Root = styled.div`
   min-height: 100vh;
 `;
 
-const AppContent = styled.div`
+const AppContent = styled.div<Pick<AppBaseProps, 'direction'>>`
   flex: 1;
   display: flex;
-  flex-direction: column;
+  flex-direction: ${(props) => (props.direction ? props.direction : 'column')};
 `;
 
-export const AppBase: React.FC = (props) => {
+type AppBaseProps = {
+  direction?: GridDirection;
+};
+
+export const AppBase: React.FC<AppBaseProps> = (props) => {
   return (
     <Root>
       <CssBaseline />
-      <AppContent>{props.children}</AppContent>
+      <AppContent direction={props.direction}>{props.children}</AppContent>
     </Root>
   );
 };
