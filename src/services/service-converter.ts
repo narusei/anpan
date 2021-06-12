@@ -1,11 +1,9 @@
 import * as serviceTypes from './service-types';
 import firebase from 'firebase';
 
-export const anpanConverter: firebase.firestore.FirestoreDataConverter<
-  Omit<serviceTypes.Anpan, 'anpanId' | 'memos'>
-> = {
+export const anpanConverter: firebase.firestore.FirestoreDataConverter<serviceTypes.AnpanDocument> = {
   toFirestore(
-    anpan: Omit<serviceTypes.Anpan, 'anpanId' | 'memos'>
+    anpan: serviceTypes.AnpanDocument
   ): firebase.firestore.DocumentData {
     return {
       ...anpan,
@@ -18,7 +16,7 @@ export const anpanConverter: firebase.firestore.FirestoreDataConverter<
   fromFirestore(
     snapshot: firebase.firestore.QueryDocumentSnapshot,
     options: firebase.firestore.SnapshotOptions
-  ): Omit<serviceTypes.Anpan, 'anpanId' | 'memos'> {
+  ): serviceTypes.AnpanDocument {
     const data = snapshot.data(options);
     return {
       title: data.title,
@@ -32,23 +30,27 @@ export const anpanConverter: firebase.firestore.FirestoreDataConverter<
   },
 };
 
-export const memoConverter: firebase.firestore.FirestoreDataConverter<
-  Omit<serviceTypes.Memo, 'memoId'>
-> = {
+export const memoConverter: firebase.firestore.FirestoreDataConverter<serviceTypes.MemoDocument> = {
   toFirestore(
-    memo: Omit<serviceTypes.Memo, 'memoId'>
+    memo: serviceTypes.MemoDocument
   ): firebase.firestore.DocumentData {
     return {
       ...memo,
+      createdAt: memo.createdAt
+        ? memo.createdAt
+        : firebase.firestore.FieldValue.serverTimestamp(),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
     };
   },
   fromFirestore(
     snapshot: firebase.firestore.QueryDocumentSnapshot,
     options: firebase.firestore.SnapshotOptions
-  ): Omit<serviceTypes.Memo, 'memoId'> {
+  ): serviceTypes.MemoDocument {
     const data = snapshot.data(options);
     return {
       content: data.content,
+      createdAt: data.createdAt,
+      updatedAt: data.updatedAt,
     };
   },
 };

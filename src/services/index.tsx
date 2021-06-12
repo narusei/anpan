@@ -61,12 +61,12 @@ export const getAnpan = async (
   const anpan = anpanSnap.data();
   if (anpanSnap.exists && anpan && !memosSnap.empty) {
     return {
-      ...anpan,
       anpanId: anpanSnap.id,
+      ...anpan,
       memos: memosSnap.docs.map((doc) => {
         return {
           memoId: doc.id,
-          content: doc.data().content,
+          ...doc.data(),
         };
       }),
     };
@@ -164,6 +164,8 @@ export const createMemo = async (
       .withConverter(serviceConverter.memoConverter)
       .add({
         content: request.content,
+        createdAt: request.createdAt,
+        updatedAt: request.updatedAt,
       });
     return true;
   } catch (e) {
