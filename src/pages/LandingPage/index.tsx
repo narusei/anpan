@@ -181,7 +181,7 @@ export const LandingPage: React.FC = () => {
                   src="/static/img/content.svg"
                   alt="content"
                   title="content"
-                  width="400px"
+                  width="350px"
                 ></img>
               </Grid>
 
