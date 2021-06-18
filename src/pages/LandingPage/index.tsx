@@ -33,7 +33,7 @@ const ExplanationGrid = styled(MuiGrid)`
     ${(props) => props.theme.spacing(20)}px;
 `;
 
-export const LandingPage: React.FC = () => {
+export const LandingPage = (): JSX.Element => {
   return (
     <AppBase>
       <AppBar

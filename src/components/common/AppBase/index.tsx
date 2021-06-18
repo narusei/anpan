@@ -15,9 +15,10 @@ const AppContent = styled.div<Pick<AppBaseProps, 'direction'>>`
 
 type AppBaseProps = {
   direction?: GridDirection;
+  children: React.ReactNode;
 };
 
-export const AppBase: React.FC<AppBaseProps> = (props) => {
+export const AppBase = (props: AppBaseProps): JSX.Element => {
   return (
     <Root>
       <CssBaseline />

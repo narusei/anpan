@@ -3,7 +3,7 @@ import { AnpanListLayout } from '../../../layouts/anpan/AnpanListLayout';
 import * as api from '../../../services';
 import * as serviceTypes from '../../../services/service-types';
 
-export const AnpanListPage: React.FC = () => {
+export const AnpanListPage = (): JSX.Element => {
   const [anpans, setAnpans] = React.useState<serviceTypes.AnpanListItem[]>([]);
 
   React.useEffect(() => {

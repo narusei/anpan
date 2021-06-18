@@ -19,6 +19,10 @@ type authContextType = {
   signout: () => Promise<void>;
 };
 
+type authProviderType = {
+  children: React.ReactNode;
+};
+
 function createCtx<ContextType>() {
   const ctx = createContext<ContextType | undefined>(undefined);
   function useCtx() {
@@ -77,7 +81,7 @@ const useAuthContext = (): authContextType => {
 
 export const [useAuth, SetAuthProvider] = createCtx<authContextType>();
 
-export const AuthProvider: React.FC = (props) => {
+export const AuthProvider = (props: authProviderType): JSX.Element => {
   const auth = useAuthContext();
   return <SetAuthProvider value={auth}>{props.children}</SetAuthProvider>;
 };
