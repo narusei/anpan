@@ -20,9 +20,9 @@ export type AnpanListLayoutProps = {
   anpans: AnpanListItem[];
 };
 
-export const AnpanListLayout: React.FC<AnpanListLayoutProps> = (props) => {
+export const AnpanListLayout = (props: AnpanListLayoutProps): JSX.Element => {
   return (
-    <WithResponsiveDrawerLayout>
+    <WithResponsiveDrawerLayout bgColor="primary">
       <AnpanListGrid container spacing={1}>
         {props.anpans.map((anpan) => {
           return (

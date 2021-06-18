@@ -13,6 +13,7 @@ import {
   Grid as MuiGrid,
   Grid,
   IconButton,
+  PropTypes,
 } from '@material-ui/core';
 import {
   Menu as MenuIcon,
@@ -71,11 +72,13 @@ export type WithResponsiveDrawerLayoutProps = {
   left?: JSX.Element;
   right?: JSX.Element;
   window?: () => Window;
+  bgColor?: PropTypes.Color | 'transparent';
+  children: React.ReactNode;
 };
 
-export const WithResponsiveDrawerLayout: React.FC<WithResponsiveDrawerLayoutProps> = (
-  props
-) => {
+export const WithResponsiveDrawerLayout = (
+  props: WithResponsiveDrawerLayoutProps
+): JSX.Element => {
   const { left, right, window } = props;
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -154,7 +157,7 @@ export const WithResponsiveDrawerLayout: React.FC<WithResponsiveDrawerLayoutProp
           </Drawer>
         </Hidden>
       </DrawerNav>
-      <AppMain>
+      <AppMain bgColor={props.bgColor}>
         <ToolbarSpacing />
         <Grid>{props.children}</Grid>
       </AppMain>
