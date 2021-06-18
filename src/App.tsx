@@ -13,7 +13,8 @@ import { PrivateRoute } from './auth/PrivateRoute';
 import { AuthenticatedRoute } from './auth/AuthenticatedRoute';
 import { SignInPage } from './pages/SignInPage';
 import { SignUpPage } from './pages/SignUpPage';
-import { MemoListPage } from './pages/my-list/MemoListPage';
+import { AnpanListPage } from './pages/anpan/AnpanListPage';
+import { AnpanDetailPage } from './pages/anpan/AnpanDetailPage';
 
 const theme = createTheme();
 
@@ -31,7 +32,12 @@ function App(): JSX.Element {
               <PrivateRoute
                 exact
                 path="/my-list"
-                component={MemoListPage}
+                component={AnpanListPage}
+              ></PrivateRoute>
+              <PrivateRoute
+                exact
+                path="/my-list/:id"
+                component={AnpanDetailPage}
               ></PrivateRoute>
             </Router>
           </AuthProvider>
