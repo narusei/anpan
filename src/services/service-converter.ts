@@ -54,3 +54,20 @@ export const memoConverter: firebase.firestore.FirestoreDataConverter<serviceTyp
     };
   },
 };
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const createDocument = <T>(document: T) => {
+  return {
+    ...document,
+    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+    updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+  };
+};
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const updateDocument = <T>(document: T) => {
+  return {
+    ...document,
+    updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+  };
+};

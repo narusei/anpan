@@ -20,7 +20,7 @@ const Template: Story<AnpanDetailLayoutProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   anpan: {
-    anpanId: '1',
+    id: '1',
     title:
       'Homebrewでyarnを入れる際にnvmで入れたnodeを使ってdependenciesを解決することができない',
     problem:
@@ -28,17 +28,17 @@ Default.args = {
     error:
       'The linking step did not complete successfully The formula built,but is not symlinked into /usr/local',
     milk: '',
-    memos: [],
     isPublic: true,
     createdAt: firebase.firestore.Timestamp.fromDate(new Date('2021/06/11')),
     updatedAt: firebase.firestore.Timestamp.fromDate(new Date('2021/06/11')),
   },
+  memos: [],
 };
 
 export const AnyMemo = Template.bind({});
 AnyMemo.args = {
   anpan: {
-    anpanId: '1',
+    id: '1',
     title:
       'Homebrewでyarnを入れる際にnvmで入れたnodeを使ってdependenciesを解決することができない',
     problem:
@@ -46,38 +46,30 @@ AnyMemo.args = {
     error:
       'The linking step did not complete successfully The formula built,but is not symlinked into /usr/local',
     milk: '',
-    memos: [
-      {
-        memoId: '1',
-        content: '--ignore-dependenciesフラグを使うのはクレバーではなさそうだ',
-        createdAt: firebase.firestore.Timestamp.fromDate(
-          new Date('2021/06/11')
-        ),
-        updatedAt: firebase.firestore.Timestamp.fromDate(
-          new Date('2021/06/11')
-        ),
-      },
-      {
-        memoId: '2',
-        content: 'バージョンアップに対応できない',
-        createdAt: firebase.firestore.Timestamp.fromDate(
-          new Date('2021/06/11')
-        ),
-        updatedAt: firebase.firestore.Timestamp.fromDate(
-          new Date('2021/06/11')
-        ),
-      },
-    ],
     isPublic: true,
     createdAt: firebase.firestore.Timestamp.fromDate(new Date('2021/06/11')),
     updatedAt: firebase.firestore.Timestamp.fromDate(new Date('2021/06/11')),
   },
+  memos: [
+    {
+      id: '1',
+      content: '--ignore-dependenciesフラグを使うのはクレバーではなさそうだ',
+      createdAt: firebase.firestore.Timestamp.fromDate(new Date('2021/06/11')),
+      updatedAt: firebase.firestore.Timestamp.fromDate(new Date('2021/06/11')),
+    },
+    {
+      id: '2',
+      content: 'バージョンアップに対応できない',
+      createdAt: firebase.firestore.Timestamp.fromDate(new Date('2021/06/11')),
+      updatedAt: firebase.firestore.Timestamp.fromDate(new Date('2021/06/11')),
+    },
+  ],
 };
 
 export const Anpan = Template.bind({});
 Anpan.args = {
   anpan: {
-    anpanId: '1',
+    id: '1',
     title:
       'Homebrewでyarnを入れる際にnvmで入れたnodeを使ってdependenciesを解決することができない',
     problem:
@@ -85,30 +77,22 @@ Anpan.args = {
     error:
       'The linking step did not complete successfully The formula built,but is not symlinked into /usr/local',
     milk: 'npmの方にyarnをインストールする方が良い気がしたのでそれで対応',
-    memos: [
-      {
-        memoId: '1',
-        content: '--ignore-dependenciesフラグを使うのはクレバーではなさそうだ',
-        createdAt: firebase.firestore.Timestamp.fromDate(
-          new Date('2021/06/11')
-        ),
-        updatedAt: firebase.firestore.Timestamp.fromDate(
-          new Date('2021/06/11')
-        ),
-      },
-      {
-        memoId: '2',
-        content: 'バージョンアップに対応できない',
-        createdAt: firebase.firestore.Timestamp.fromDate(
-          new Date('2021/06/11')
-        ),
-        updatedAt: firebase.firestore.Timestamp.fromDate(
-          new Date('2021/06/11')
-        ),
-      },
-    ],
     isPublic: true,
     createdAt: firebase.firestore.Timestamp.fromDate(new Date('2021/06/11')),
     updatedAt: firebase.firestore.Timestamp.fromDate(new Date('2021/06/11')),
   },
+  memos: [
+    {
+      id: '1',
+      content: '--ignore-dependenciesフラグを使うのはクレバーではなさそうだ',
+      createdAt: firebase.firestore.Timestamp.fromDate(new Date('2021/06/11')),
+      updatedAt: firebase.firestore.Timestamp.fromDate(new Date('2021/06/11')),
+    },
+    {
+      id: '2',
+      content: 'バージョンアップに対応できない',
+      createdAt: firebase.firestore.Timestamp.fromDate(new Date('2021/06/11')),
+      updatedAt: firebase.firestore.Timestamp.fromDate(new Date('2021/06/11')),
+    },
+  ],
 };

@@ -18,7 +18,8 @@ import { MilkIcon } from '../../../components/icon/MilkIcon';
 import React from 'react';
 import styled from 'styled-components/macro';
 import { format } from 'date-fns';
-import { Anpan } from '../../../services/service-types';
+import { Anpan } from '../../../entities/Anpan';
+import { Memo } from '../../../entities/Memo';
 import { AppBar } from '../../../components/common/AppBar';
 import { AppBase } from '../../../components/common/AppBase';
 import { AppMain } from '../../../components/common/AppMain';
@@ -26,6 +27,7 @@ import { SpacingContainer } from '../../../components/common/SpacingContainer';
 
 export type AnpanDetailLayoutProps = {
   anpan?: Anpan;
+  memos?: Memo[];
 };
 
 const AnpanDetailGrid = styled(MuiGrid)`
@@ -46,6 +48,7 @@ const MemoGrid = styled(MuiGrid)`
 
 export const AnpanDetailLayout = ({
   anpan,
+  memos,
 }: AnpanDetailLayoutProps): JSX.Element => {
   return (
     <AppBase>
@@ -86,9 +89,11 @@ export const AnpanDetailLayout = ({
                       <Typography variant="h4">{anpan.title}</Typography>
                     </Grid>
                     <Grid item container justify="flex-end">
-                      <Typography>
-                        {format(anpan.createdAt.toDate(), 'yyyy/MM/dd')}
-                      </Typography>
+                      {anpan.createdAt && (
+                        <Typography>
+                          {format(anpan.createdAt.toDate(), 'yyyy/MM/dd')}
+                        </Typography>
+                      )}
                     </Grid>
                   </Grid>
                 </Grid>
@@ -125,10 +130,10 @@ export const AnpanDetailLayout = ({
               </AnpanDetailContentGrid>
 
               <Divider></Divider>
-              {anpan.memos &&
-                anpan.memos.map((memo) => {
+              {memos &&
+                memos.map((memo) => {
                   return (
-                    <Grid key={memo.memoId}>
+                    <Grid key={memo.id}>
                       <MemoGrid container alignItems="center">
                         <SpacingContainer item flex={true}>
                           {memo.content}

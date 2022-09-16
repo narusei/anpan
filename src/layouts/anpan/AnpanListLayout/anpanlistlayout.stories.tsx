@@ -21,32 +21,32 @@ export const Default = Template.bind({});
 Default.args = {
   anpans: [
     {
-      anpanId: '1',
+      id: '1',
       title: 'homebrewのエラーが解決できない',
       createdAt: firebase.firestore.Timestamp.fromDate(new Date('2021/06/11')),
     },
     {
-      anpanId: '2',
+      id: '2',
       title: 'storybookのエラーが解決できない',
       createdAt: firebase.firestore.Timestamp.fromDate(new Date('2021/06/11')),
     },
     {
-      anpanId: '3',
+      id: '3',
       title: 'reactのエラーが解決できない',
       createdAt: firebase.firestore.Timestamp.fromDate(new Date('2021/06/11')),
     },
     {
-      anpanId: '4',
+      id: '4',
       title: 'vue.jsのエラーが解決できない',
       createdAt: firebase.firestore.Timestamp.fromDate(new Date('2021/06/12')),
     },
     {
-      anpanId: '5',
+      id: '5',
       title: 'M5Stackのエラーが解決できない',
       createdAt: firebase.firestore.Timestamp.fromDate(new Date('2021/06/13')),
     },
     {
-      anpanId: '6',
+      id: '6',
       title: 'C++の型定義が理解できない',
       createdAt: firebase.firestore.Timestamp.fromDate(new Date('2021/06/12')),
     },

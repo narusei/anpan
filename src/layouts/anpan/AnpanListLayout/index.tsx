@@ -9,7 +9,8 @@ import {
 import React from 'react';
 import styled from 'styled-components/macro';
 import { format } from 'date-fns';
-import { AnpanListItem } from '../../../services/service-types';
+// import { AnpanListItem } from '../../../services/service-types';
+import { AnpanListItem } from '../../../entities/Anpan';
 import { WithResponsiveDrawerLayout } from '../../common/WithResponsiveDrawerLayout';
 
 const AnpanListGrid = styled(MuiGrid)`
@@ -26,20 +27,22 @@ export const AnpanListLayout = (props: AnpanListLayoutProps): JSX.Element => {
       <AnpanListGrid container spacing={1}>
         {props.anpans.map((anpan) => {
           return (
-            <Grid item key={anpan.anpanId} xs={12} sm={4}>
+            <Grid item key={anpan.id} xs={12} sm={4}>
               <Card>
                 <CardActionArea>
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
                       {anpan.title}
                     </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      {format(anpan.createdAt.toDate(), 'yyyy/MM/dd')}
-                    </Typography>
+                    {anpan.createdAt && (
+                      <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p"
+                      >
+                        {format(anpan.createdAt.toDate(), 'yyyy/MM/dd')}
+                      </Typography>
+                    )}
                   </CardContent>
                 </CardActionArea>
               </Card>
